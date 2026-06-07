@@ -9,7 +9,8 @@ combo = [[0,1,2],[3,4,5],[6,7,8],
 winstatus = False
 
 def clear():
-  print("\033[H", end="")
+  #print("\033[H", end="")
+  os.system("cls")
 
 def print_grid():
   print(f" {grid[0]}|{grid[1]}|{grid[2]} ")
