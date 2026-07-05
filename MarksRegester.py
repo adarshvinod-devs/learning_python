@@ -13,10 +13,13 @@ choices = {1:"Add Student",2:"Add Marks of a student",3:"Find the average marks 
 
 def add_student():
   name = input("Enter the student's name to save: ")
-  students_marks[name] = {}
-  print("Name is saved")
-  with open ("Marksheet.json","w") as marksheet:
-     json.dump(students_marks,marksheet)
+  if name in students_marks:
+     print("This name already exists. Try adding initials")
+  else:
+   students_marks[name] = {}
+   print("Name is saved")
+   with open ("Marksheet.json","w") as marksheet:
+      json.dump(students_marks,marksheet)
 
 def add_marks():
    global students_marks
