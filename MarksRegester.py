@@ -1,4 +1,12 @@
-students_marks = {}
+import json
+
+try:
+   with open ("Marksheet.json", "r") as marksheet:
+      students_marks = json.load(marksheet)
+except FileNotFoundError:
+   students_marks = {}
+
+
 temp_student_marks = {}
 subjects = ["Maths","Science","English"]
 choices = {1:"Add Student",2:"Add Marks of a student",3:"Find the average marks of a student",4:"View existing students",5:"Exit"}
@@ -7,6 +15,8 @@ def add_student():
   name = input("Enter the student's name to save: ")
   students_marks[name] = {}
   print("Name is saved")
+  with open ("Marksheet.json","w") as marksheet:
+     json.dump(students_marks,marksheet)
 
 def add_marks():
    global students_marks
@@ -20,6 +30,8 @@ def add_marks():
          if len(temp_student_marks) == len(subjects):
             students_marks[name] = temp_student_marks
             print("Marks are saved")
+            with open ("Marksheet.json","w") as marksheet:
+               json.dump(students_marks,marksheet)
       else:
          print("This student does not exist")
    except ValueError:
@@ -29,7 +41,7 @@ def average_marks():
    name = input("Enter the students name to check average marks: ")
    if name in students_marks and students_marks[name]:
       avg = sum(students_marks[name].values())/ len(students_marks[name])
-      print(f"Average marks = {avg}")
+      print(f"Average marks = {round(avg,2)}")
    elif name in students_marks:
       print("Marks are not uploaded yet")
    else:
