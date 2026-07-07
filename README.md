@@ -1,0 +1,1 @@
+This repository contains python program that I've wrote to practice basic programming concepts like loops, variables, functions, conditions, file handling etc. The goal of each program is to help me learn all these concepts. 
